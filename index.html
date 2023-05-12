@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #aaaaffc3;
+        }
+        .container {
+            text-align: center;
+            background-color: #6973f8;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .logo img {
+            max-width: 300px; /* Change this value to your desired width */
+            height: auto;
+        }
+        .description {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .instructions {
+            font-size: 14px;
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin-bottom: 5px;
+        }
+        label {
+            font-size: 16px;
+            font-weight: 400;
+        }
+        textarea {
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            margin-top: 10px;
+            resize: none;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            background-color: #ff8383;
+            border: none;
+            border-radius: 4px;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 10px 20px;
+            margin-top: 20px;
+        }
+        input[type="submit"]:hover {
+            background-color: #39fb56;
+        }
+        h2 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+        .contact {
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        .contact a {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        .contact a:hover {
+            color: #39fb56;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='KAMAI.png') }}" alt="Logo">
+        </div>
+        <p class="description">
+            This email spam detector tool uses machine learning algorithms to analyze the content of an email and predict whether it is spam or not. Simply enter the text of the email below, and the tool will provide you with a prediction.
+        </p>
+        <ol class="instructions">
+            <li>Enter the text of the email in the provided text area.</li>
+            <li>Click the "Predict" button to analyze the email.</li>
+            <li>View the prediction result displayed below the form.</li>
+        </ol>
+        <form action="/" method="POST">
+            <label for="email">Enter the email text:</label>
+            <br>
+            <textarea id="email" name="email" rows="4" cols="50"></textarea>
+            <br>
+            <input type="submit" value="Predict">
+        </form>
+        {% if prediction %}
+        <h2>Prediction: {{ prediction }}</h2>
+        {% endif %}
+        <p class="contact">
+            For any questions or feedback, please <a href="mailto:kamaleshwar711@gmail.com">contact us</a>.
+        </p>
+    </div>
+</body>
+</html>
+
